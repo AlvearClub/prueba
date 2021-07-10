@@ -19,24 +19,19 @@
 @import url("https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600&display=swap");
 
 /*===== VARIABLES CSS =====*/
-:root {
---header-height: 3rem;
-
-/*===== Colors =====*/
---first-color: #0F4EAE;
---first-color-light: #C4C7F5;
---dark-color: white;
---white-color: #FBFBFB;
-
-/*===== Font and typography =====*/
---body-font: 'Open Sans', sans-serif;
---nav-name-font-size: 1.5rem;
---normal-font-size: .938rem;
-
-/*===== z index =====*/
---z-fixed: 100;
-}
-
+.btn{
+            border:2.5px solid var(--thirt-color);
+            border-radius: 20px;
+            background-color: var(--thirt-color);
+            color: var(--white-color);
+            box-shadow: 2.5px 2.5px rgba(0, 0, 0, 0.4);
+          }
+          .icontxt{
+            color: var(--thirt-color);
+          }
+          #encabezado-toggle{
+            color: var(--thirt-color);
+          }
 @media screen and (min-width: 768px) {
 :root {
 --nav-name-font-size: 1rem;
@@ -74,24 +69,8 @@ margin-left: 1.5rem;
 margin-right: 1.5rem;
 }
 
-/*===== HEADER =====*/
-.encabezado {
-position: fixed;
-top: 0;
-left: 0;
-width: 100%;
-height: var(--header-height);
-padding: 0 1rem;
-background-color: #052f6e;
-z-index: var(--z-fixed);
-display: flex;
-justify-content: space-between;
-align-items: center;
-box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-}
-
 .encabezado__logo {
-color: var(--dark-color);
+color: var(--thirt-color);
 }
 
 .encabezado__toggle {
@@ -105,7 +84,7 @@ cursor: pointer;
 position: fixed;
 top: 0;
 left: -100%;
-background-color: var(--first-color);
+background-color: var(--thirt-color);
 width: 80%;
 height: 100%;
 padding: 2rem 0;
@@ -153,11 +132,11 @@ margin-bottom: 2rem;
 }
 
 .nave__link {
-color: var(--first-color-light);
+color: var(--white-color);
 }
 
 .nave__link:hover {
-color: var(--white-color);
+color: var(--first-color);
 }
 
 /*Show menu*/
@@ -167,7 +146,7 @@ left: 0;
 
 /*Active link*/
 .active {
-color: var(--white-color);
+color: var(--first-color);
 }
 
 .dropdowne__link {
@@ -238,7 +217,7 @@ margin-bottom: 0;
 width: 46px;
 }
 .nave__name {
-color: var(--dark-color);
+color: var(--thirt-color);
 }
 .nave__list {
 display: flex;
@@ -249,14 +228,14 @@ margin: 0 1.5rem;
 padding: 1.4rem 0;
 }
 .nave__link {
-color: var(--dark-color);
+color: var(--thirt-color);
 }
 .nave__link:hover {
-color: var(--first-color-light);
+color: var(--first-color);
 }
 /*Active link new color*/
 .active {
-color: var(--first-color-light);
+color: var(--first-color);
 }
 .dropdowne {
 position: relative;
@@ -268,7 +247,7 @@ top: calc(var(--header-height) + 1rem);
 padding: .5rem 1.5rem;
 box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 border-radius: .5rem;
-background-color: #052f6e;
+background-color: var(--white-color);
 }
 .dropdowne__item {
 margin: .5rem 0;
@@ -293,7 +272,7 @@ width: 4.5vh;
 height: 4vh;
 }
 .footer{
-background-color: #052f6e;
+background-color: var(--white-color);
 padding: 20px 100px;
 display: flex;
 justify-content: space-between;
@@ -308,7 +287,7 @@ text-align: center;
 }
 }
 .text{
-color:white;
+color: var(--first-color);
 font-size: 1.8vh;
 }
 </style>
@@ -317,9 +296,9 @@ font-size: 1.8vh;
 
   <body id="cuerpo">
     <header class="encabezado">
-      <a href="#" class="encabezado__logo">Alvear Club</a>
+      <a href="inicio.html" class="encabezado__logo">Alvear Club</a>
 
-      <i class='bx bx-menu encabezado__toggle' id="encabezado-toggle" style="color:white;"></i>
+      <i class='bx bx-menu encabezado__toggle' id="encabezado-toggle" ></i>
 
       <nav class="nave" id="nave-menu">
           <div class="nave__content bd-grid">
@@ -334,7 +313,7 @@ font-size: 1.8vh;
 
               <div class="nave__menu">
                   <ul class="nave__list">
-                      <li class="nave__item"><a href="formulario.html" class="nave__link active">Inscribirme</a></li>
+                      <li class="nave__item"><a href="formulario.html" class="nave__link">Inscribirme</a></li>
 
                       <li class="nave__item dropdowne">
                           <a href="#" class="nave__link dropdowne__link">Listado de Inscriptos <i class='bx bx-chevron-down dropdowne__icon'></i></a>
@@ -349,7 +328,7 @@ font-size: 1.8vh;
                       </li>
 
                       <li class="nave__item dropdowne">
-                          <a href="#" class="nave__link dropdowne__link">Sembrado de Zonas<i class='bx bx-chevron-down dropdowne__icon'></i></a>
+                          <a href="#" class="nave__link dropdowne__link active">Sembrado de Zonas<i class='bx bx-chevron-down dropdowne__icon'></i></a>
                               
 
                           <ul class="dropdowne__menu">
@@ -373,7 +352,7 @@ font-size: 1.8vh;
     <div class="container justify-content-md-center aling-items-center " style=" margin-bottom:30px; margin-top: 9vh;">
       <div class="row justify-content-md-center" style= "margin-top:3vh;">
         <div class="col md-4 text-center">
-            <img src="Logo.png" id="imagen" style="width:25vh">
+            <img src="img/Logo.png" id="imagen" style="width:25vh">
         </div>
       </div>
       <div class="row justify-content-md-center" style= "margin:3vh;">
@@ -410,9 +389,9 @@ font-size: 1.8vh;
       </div>
     </div>
     <section class="footer" style="margin-right: 3vh;">
-      <p class="text"><a style="color: white;"href="https://wa.link/e0ayey">Diseño y Desarrollo por Diego Simón</a></p>
+      <p class="text"><a style="color: #16baea"href="https://wa.link/e0ayey">Diseño y Desarrollo por Diego Simón</a></p>
       <p class="text" style="font-size: 1.5vh;">© Alvear Club Tenis de Mesa 2021 | Todos los derechos reservados.</p>
     </section>
-    <script src="assets/js/main.js"></script>
+    <script src="main.js"></script>
   </body>
 </html>
