@@ -19,7 +19,1300 @@
     <style>
       /*===== GOOGLE FONTS =====*/
 @import url("https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600&display=swap");
-
+/* /!\ You need to add vendor prefixes in order to render the CSS properly (or simply use http://leaverou.github.io/prefixfree/) /!\ */ #tridiv {
+  perspective: 800px;
+  position: absolute;
+  overflow: hidden;
+  width: 100%;
+  height: 100%;
+  background: #16baea;
+  font-size: 150%;
+}
+.face {
+  box-shadow: inset 0 0 0 1px rgba(0, 0, 0, 0.27);
+}
+.scene, .shape, .face, .face-wrapper, .cr {
+  position: absolute;
+  transform-style: preserve-3d;
+}
+.scene {
+  width: 80em;
+  height: 80em;
+  top: 50%;
+  left: 50%;
+  margin: -40em 0 0 -40em;
+}
+.shape {
+  top: 50%;
+  left: 50%;
+  width: 0;
+  height: 0;
+  transform-origin: 50%;
+}
+.face, .face-wrapper {
+  overflow: hidden;
+  transform-origin: 0 0;
+  backface-visibility: hidden;
+  /* hidden by default, prevent blinking and other weird rendering glitchs */
+}
+.face {
+  background-size: 100% 100%!important;
+  background-position: center;
+}
+.face-wrapper .face {
+  left: 100%;
+  width: 100%;
+  height: 100%
+}
+.photon-shader {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%
+}
+.side {
+  left: 50%;
+}
+.cr, .cr .side {
+  height: 100%;
+}
+[class*="cuboid"] .ft, [class*="cuboid"] .bk {
+  width: 100%;
+  height: 100%;
+}
+[class*="cuboid"] .bk {
+  left: 100%;
+}
+[class*="cuboid"] .rt {
+  transform: rotateY(-90deg) translateX(-50%);
+}
+[class*="cuboid"] .lt {
+  transform: rotateY(90deg) translateX(-50%);
+}
+[class*="cuboid"] .tp {
+  transform: rotateX(90deg) translateY(-50%);
+}
+[class*="cuboid"] .bm {
+  transform: rotateX(-90deg) translateY(-50%);
+}
+[class*="cuboid"] .lt {
+  left: 100%;
+}
+[class*="cuboid"] .bm {
+  top: 100%;
+}
+/* .cub-1 styles */
+.cub-1 {
+  transform:translate3D(0.027777777777777762em, 0em, 2.7755575615628914e-17em) rotateX(0deg) rotateY(0deg) rotateZ(0deg);
+  opacity:1;
+  width:20em;
+  height:0.1em;
+  margin:-0.05em 0 0 -10em;
+}
+.cub-1 .ft {
+  transform:translateZ(20em);
+}
+.cub-1 .bk {
+  transform:translateZ(-20em) rotateY(180deg);
+}
+.cub-1 .rt, .cub-1 .lt {
+  width:40em;
+  height:0.1em;
+}
+.cub-1 .tp, .cub-1 .bm {
+  width:20em;
+  height:40em;
+}
+.cub-1 .face {
+  background-color:#26495d;
+}
+/* .cub-2 styles */
+.cub-2 {
+  transform:translate3D(6.371527777777778em, -0.76em, -11.76388888888889em) rotateX(0deg) rotateY(0deg) rotateZ(0deg);
+  opacity:1;
+  width:1.525em;
+  height:0.05em;
+  margin:-0.025em 0 0 -0.7625em;
+}
+.cub-2 .ft {
+  transform:translateZ(1.37em);
+}
+.cub-2 .bk {
+  transform:translateZ(-1.37em) rotateY(180deg);
+}
+.cub-2 .rt, .cub-2 .lt {
+  width:2.74em;
+  height:0.05em;
+}
+.cub-2 .tp, .cub-2 .bm {
+  width:1.525em;
+  height:2.74em;
+}
+.cub-2 .face {
+  background-color:#FFFFFF;
+}
+.cub-2 .ft {
+  background-color:#bfbfbf;
+}
+.cub-2 .bk {
+  background-color:#bfbfbf;
+}
+.cub-2 .tp {
+  background-color:#678ca6;
+}
+.cub-2 .bm {
+  background-color:#bfbfbf;
+}
+.cub-2 .lt {
+  background-color:#bfbfbf;
+}
+.cub-2 .rt {
+  background-color:#bfbfbf;
+}
+/* .cub-3 styles */
+.cub-3 {
+  transform:translate3D(9.253219696969696em, -0.3660669191919191em, -2.402272727272729em) rotateX(0deg) rotateY(90deg) rotateZ(0deg);
+  opacity:1;
+  width:0.05em;
+  height:0.65em;
+  margin:-0.325em 0 0 -0.025em;
+}
+.cub-3 .ft {
+  transform:translateZ(0.75em);
+}
+.cub-3 .bk {
+  transform:translateZ(-0.75em) rotateY(180deg);
+}
+.cub-3 .rt, .cub-3 .lt {
+  width:1.5em;
+  height:0.65em;
+}
+.cub-3 .tp, .cub-3 .bm {
+  width:0.05em;
+  height:1.5em;
+}
+.cub-3 .face {
+  background-color:#FFFFFF;
+}
+.cub-3 .ft {
+  background-color:#adadad;
+}
+.cub-3 .bk {
+  background-color:#adadad;
+}
+.cub-3 .tp {
+  background-color:#adadad;
+}
+.cub-3 .bm {
+  background-color:#adadad;
+}
+.cub-3 .lt {
+  background-color:#274294;
+}
+.cub-3 .rt {
+  background-color:#274294;
+}
+/* .cub-4 styles */
+.cub-4 {
+  transform:translate3D(7.669886363636364em, -0.366066919191919em, -2.402272727272729em) rotateX(0deg) rotateY(90deg) rotateZ(0deg);
+  opacity:1;
+  width:0.05em;
+  height:0.65em;
+  margin:-0.325em 0 0 -0.025em;
+}
+.cub-4 .ft {
+  transform:translateZ(0.75em);
+}
+.cub-4 .bk {
+  transform:translateZ(-0.75em) rotateY(180deg);
+}
+.cub-4 .rt, .cub-4 .lt {
+  width:1.5em;
+  height:0.65em;
+}
+.cub-4 .tp, .cub-4 .bm {
+  width:0.05em;
+  height:1.5em;
+}
+.cub-4 .face {
+  background-color:#FFFFFF;
+}
+.cub-4 .ft {
+  background-color:#adadad;
+}
+.cub-4 .bk {
+  background-color:#adadad;
+}
+.cub-4 .tp {
+  background-color:#adadad;
+}
+.cub-4 .bm {
+  background-color:#adadad;
+}
+.cub-4 .lt {
+  background-color:#274294;
+}
+.cub-4 .rt {
+  background-color:#274294;
+}
+/* .cub-5 styles */
+.cub-5 {
+  transform:translate3D(6.086553030303031em, -0.3660669191919189em, -2.402272727272729em) rotateX(0deg) rotateY(90deg) rotateZ(0deg);
+  opacity:1;
+  width:0.05em;
+  height:0.65em;
+  margin:-0.325em 0 0 -0.025em;
+}
+.cub-5 .ft {
+  transform:translateZ(0.75em);
+}
+.cub-5 .bk {
+  transform:translateZ(-0.75em) rotateY(180deg);
+}
+.cub-5 .rt, .cub-5 .lt {
+  width:1.5em;
+  height:0.65em;
+}
+.cub-5 .tp, .cub-5 .bm {
+  width:0.05em;
+  height:1.5em;
+}
+.cub-5 .face {
+  background-color:#FFFFFF;
+}
+.cub-5 .ft {
+  background-color:#adadad;
+}
+.cub-5 .bk {
+  background-color:#adadad;
+}
+.cub-5 .tp {
+  background-color:#adadad;
+}
+.cub-5 .bm {
+  background-color:#adadad;
+}
+.cub-5 .lt {
+  background-color:#274294;
+}
+.cub-5 .rt {
+  background-color:#274294;
+}
+/* .cub-6 styles */
+.cub-6 {
+  transform:translate3D(4.47544191919192em, -0.3660669191919189em, -2.402272727272729em) rotateX(0deg) rotateY(90deg) rotateZ(0deg);
+  opacity:1;
+  width:0.05em;
+  height:0.65em;
+  margin:-0.325em 0 0 -0.025em;
+}
+.cub-6 .ft {
+  transform:translateZ(0.75em);
+}
+.cub-6 .bk {
+  transform:translateZ(-0.75em) rotateY(180deg);
+}
+.cub-6 .rt, .cub-6 .lt {
+  width:1.5em;
+  height:0.65em;
+}
+.cub-6 .tp, .cub-6 .bm {
+  width:0.05em;
+  height:1.5em;
+}
+.cub-6 .face {
+  background-color:#FFFFFF;
+}
+.cub-6 .ft {
+  background-color:#adadad;
+}
+.cub-6 .bk {
+  background-color:#adadad;
+}
+.cub-6 .tp {
+  background-color:#adadad;
+}
+.cub-6 .bm {
+  background-color:#adadad;
+}
+.cub-6 .lt {
+  background-color:#274294;
+}
+.cub-6 .rt {
+  background-color:#274294;
+}
+/* .cub-7 styles */
+.cub-7 {
+  transform:translate3D(2.892108585858587em, -0.3660669191919188em, -2.402272727272729em) rotateX(0deg) rotateY(90deg) rotateZ(0deg);
+  opacity:1;
+  width:0.05em;
+  height:0.65em;
+  margin:-0.325em 0 0 -0.025em;
+}
+.cub-7 .ft {
+  transform:translateZ(0.75em);
+}
+.cub-7 .bk {
+  transform:translateZ(-0.75em) rotateY(180deg);
+}
+.cub-7 .rt, .cub-7 .lt {
+  width:1.5em;
+  height:0.65em;
+}
+.cub-7 .tp, .cub-7 .bm {
+  width:0.05em;
+  height:1.5em;
+}
+.cub-7 .face {
+  background-color:#FFFFFF;
+}
+.cub-7 .ft {
+  background-color:#adadad;
+}
+.cub-7 .bk {
+  background-color:#adadad;
+}
+.cub-7 .tp {
+  background-color:#adadad;
+}
+.cub-7 .bm {
+  background-color:#adadad;
+}
+.cub-7 .lt {
+  background-color:#274294;
+}
+.cub-7 .rt {
+  background-color:#274294;
+}
+/* .cub-8 styles */
+.cub-8 {
+  transform:translate3D(1.3087752525252538em, -0.3660669191919188em, -2.402272727272729em) rotateX(0deg) rotateY(90deg) rotateZ(0deg);
+  opacity:1;
+  width:0.05em;
+  height:0.65em;
+  margin:-0.325em 0 0 -0.025em;
+}
+.cub-8 .ft {
+  transform:translateZ(0.75em);
+}
+.cub-8 .bk {
+  transform:translateZ(-0.75em) rotateY(180deg);
+}
+.cub-8 .rt, .cub-8 .lt {
+  width:1.5em;
+  height:0.65em;
+}
+.cub-8 .tp, .cub-8 .bm {
+  width:0.05em;
+  height:1.5em;
+}
+.cub-8 .face {
+  background-color:#FFFFFF;
+}
+.cub-8 .ft {
+  background-color:#adadad;
+}
+.cub-8 .bk {
+  background-color:#adadad;
+}
+.cub-8 .tp {
+  background-color:#adadad;
+}
+.cub-8 .bm {
+  background-color:#adadad;
+}
+.cub-8 .lt {
+  background-color:#274294;
+}
+.cub-8 .rt {
+  background-color:#274294;
+}
+/* .cub-9 styles */
+.cub-9 {
+  transform:translate3D(-0.2745580808080792em, -0.3660669191919188em, -2.402272727272729em) rotateX(0deg) rotateY(90deg) rotateZ(0deg);
+  opacity:1;
+  width:0.05em;
+  height:0.65em;
+  margin:-0.325em 0 0 -0.025em;
+}
+.cub-9 .ft {
+  transform:translateZ(0.75em);
+}
+.cub-9 .bk {
+  transform:translateZ(-0.75em) rotateY(180deg);
+}
+.cub-9 .rt, .cub-9 .lt {
+  width:1.5em;
+  height:0.65em;
+}
+.cub-9 .tp, .cub-9 .bm {
+  width:0.05em;
+  height:1.5em;
+}
+.cub-9 .face {
+  background-color:#FFFFFF;
+}
+.cub-9 .ft {
+  background-color:#adadad;
+}
+.cub-9 .bk {
+  background-color:#adadad;
+}
+.cub-9 .tp {
+  background-color:#adadad;
+}
+.cub-9 .bm {
+  background-color:#adadad;
+}
+.cub-9 .lt {
+  background-color:#274294;
+}
+.cub-9 .rt {
+  background-color:#274294;
+}
+/* .cub-10 styles */
+.cub-10 {
+  transform:translate3D(-1.8301136363636348em, -0.3660669191919188em, -2.402272727272729em) rotateX(0deg) rotateY(90deg) rotateZ(0deg);
+  opacity:1;
+  width:0.05em;
+  height:0.65em;
+  margin:-0.325em 0 0 -0.025em;
+}
+.cub-10 .ft {
+  transform:translateZ(0.75em);
+}
+.cub-10 .bk {
+  transform:translateZ(-0.75em) rotateY(180deg);
+}
+.cub-10 .rt, .cub-10 .lt {
+  width:1.5em;
+  height:0.65em;
+}
+.cub-10 .tp, .cub-10 .bm {
+  width:0.05em;
+  height:1.5em;
+}
+.cub-10 .face {
+  background-color:#FFFFFF;
+}
+.cub-10 .ft {
+  background-color:#adadad;
+}
+.cub-10 .bk {
+  background-color:#adadad;
+}
+.cub-10 .tp {
+  background-color:#adadad;
+}
+.cub-10 .bm {
+  background-color:#adadad;
+}
+.cub-10 .lt {
+  background-color:#274294;
+}
+.cub-10 .rt {
+  background-color:#274294;
+}
+/* .cub-11 styles */
+.cub-11 {
+  transform:translate3D(-3.3856691919191904em, -0.3660669191919188em, -2.402272727272729em) rotateX(0deg) rotateY(90deg) rotateZ(0deg);
+  opacity:1;
+  width:0.05em;
+  height:0.65em;
+  margin:-0.325em 0 0 -0.025em;
+}
+.cub-11 .ft {
+  transform:translateZ(0.75em);
+}
+.cub-11 .bk {
+  transform:translateZ(-0.75em) rotateY(180deg);
+}
+.cub-11 .rt, .cub-11 .lt {
+  width:1.5em;
+  height:0.65em;
+}
+.cub-11 .tp, .cub-11 .bm {
+  width:0.05em;
+  height:1.5em;
+}
+.cub-11 .face {
+  background-color:#FFFFFF;
+}
+.cub-11 .ft {
+  background-color:#adadad;
+}
+.cub-11 .bk {
+  background-color:#adadad;
+}
+.cub-11 .tp {
+  background-color:#adadad;
+}
+.cub-11 .bm {
+  background-color:#adadad;
+}
+.cub-11 .lt {
+  background-color:#274294;
+}
+.cub-11 .rt {
+  background-color:#274294;
+}
+/* .cub-12 styles */
+.cub-12 {
+  transform:translate3D(-4.941224747474745em, -0.3660669191919188em, -2.402272727272729em) rotateX(0deg) rotateY(90deg) rotateZ(0deg);
+  opacity:1;
+  width:0.05em;
+  height:0.65em;
+  margin:-0.325em 0 0 -0.025em;
+}
+.cub-12 .ft {
+  transform:translateZ(0.75em);
+}
+.cub-12 .bk {
+  transform:translateZ(-0.75em) rotateY(180deg);
+}
+.cub-12 .rt, .cub-12 .lt {
+  width:1.5em;
+  height:0.65em;
+}
+.cub-12 .tp, .cub-12 .bm {
+  width:0.05em;
+  height:1.5em;
+}
+.cub-12 .face {
+  background-color:#FFFFFF;
+}
+.cub-12 .ft {
+  background-color:#adadad;
+}
+.cub-12 .bk {
+  background-color:#adadad;
+}
+.cub-12 .tp {
+  background-color:#adadad;
+}
+.cub-12 .bm {
+  background-color:#adadad;
+}
+.cub-12 .lt {
+  background-color:#274294;
+}
+.cub-12 .rt {
+  background-color:#274294;
+}
+/* .cub-13 styles */
+.cub-13 {
+  transform:translate3D(-6.496780303030301em, -0.3660669191919188em, -2.402272727272729em) rotateX(0deg) rotateY(90deg) rotateZ(0deg);
+  opacity:1;
+  width:0.05em;
+  height:0.65em;
+  margin:-0.325em 0 0 -0.025em;
+}
+.cub-13 .ft {
+  transform:translateZ(0.75em);
+}
+.cub-13 .bk {
+  transform:translateZ(-0.75em) rotateY(180deg);
+}
+.cub-13 .rt, .cub-13 .lt {
+  width:1.5em;
+  height:0.65em;
+}
+.cub-13 .tp, .cub-13 .bm {
+  width:0.05em;
+  height:1.5em;
+}
+.cub-13 .face {
+  background-color:#FFFFFF;
+}
+.cub-13 .ft {
+  background-color:#adadad;
+}
+.cub-13 .bk {
+  background-color:#adadad;
+}
+.cub-13 .tp {
+  background-color:#adadad;
+}
+.cub-13 .bm {
+  background-color:#adadad;
+}
+.cub-13 .lt {
+  background-color:#274294;
+}
+.cub-13 .rt {
+  background-color:#274294;
+}
+/* .cub-14 styles */
+.cub-14 {
+  transform:translate3D(-8.052335858585858em, -0.3660669191919188em, -2.402272727272729em) rotateX(0deg) rotateY(90deg) rotateZ(0deg);
+  opacity:1;
+  width:0.05em;
+  height:0.65em;
+  margin:-0.325em 0 0 -0.025em;
+}
+.cub-14 .ft {
+  transform:translateZ(0.75em);
+}
+.cub-14 .bk {
+  transform:translateZ(-0.75em) rotateY(180deg);
+}
+.cub-14 .rt, .cub-14 .lt {
+  width:1.5em;
+  height:0.65em;
+}
+.cub-14 .tp, .cub-14 .bm {
+  width:0.05em;
+  height:1.5em;
+}
+.cub-14 .face {
+  background-color:#FFFFFF;
+}
+.cub-14 .ft {
+  background-color:#adadad;
+}
+.cub-14 .bk {
+  background-color:#adadad;
+}
+.cub-14 .tp {
+  background-color:#adadad;
+}
+.cub-14 .bm {
+  background-color:#adadad;
+}
+.cub-14 .lt {
+  background-color:#274294;
+}
+.cub-14 .rt {
+  background-color:#274294;
+}
+/* .cub-15 styles */
+.cub-15 {
+  transform:translate3D(-9.385669191919192em, -0.3660669191919188em, -2.930050505050507em) rotateX(0deg) rotateY(404.6deg) rotateZ(0deg);
+  opacity:1;
+  width:0.05em;
+  height:0.65em;
+  margin:-0.325em 0 0 -0.025em;
+}
+.cub-15 .ft {
+  transform:translateZ(0.75em);
+}
+.cub-15 .bk {
+  transform:translateZ(-0.75em) rotateY(180deg);
+}
+.cub-15 .rt, .cub-15 .lt {
+  width:1.5em;
+  height:0.65em;
+}
+.cub-15 .tp, .cub-15 .bm {
+  width:0.05em;
+  height:1.5em;
+}
+.cub-15 .face {
+  background-color:#FFFFFF;
+}
+.cub-15 .ft {
+  background-color:#adadad;
+}
+.cub-15 .bk {
+  background-color:#adadad;
+}
+.cub-15 .tp {
+  background-color:#adadad;
+}
+.cub-15 .bm {
+  background-color:#adadad;
+}
+.cub-15 .lt {
+  background-color:#274294;
+}
+.cub-15 .rt {
+  background-color:#274294;
+}
+/* .cub-16 styles */
+.cub-16 {
+  transform:translate3D(9.265719696969695em, -0.397316919191919em, 2.48522727272727em) rotateX(0deg) rotateY(90deg) rotateZ(0deg);
+  opacity:1;
+  width:0.05em;
+  height:0.65em;
+  margin:-0.325em 0 0 -0.025em;
+}
+.cub-16 .ft {
+  transform:translateZ(0.75em);
+}
+.cub-16 .bk {
+  transform:translateZ(-0.75em) rotateY(180deg);
+}
+.cub-16 .rt, .cub-16 .lt {
+  width:1.5em;
+  height:0.65em;
+}
+.cub-16 .tp, .cub-16 .bm {
+  width:0.05em;
+  height:1.5em;
+}
+.cub-16 .face {
+  background-color:#FFFFFF;
+}
+.cub-16 .ft {
+  background-color:#adadad;
+}
+.cub-16 .bk {
+  background-color:#adadad;
+}
+.cub-16 .tp {
+  background-color:#adadad;
+}
+.cub-16 .bm {
+  background-color:#adadad;
+}
+.cub-16 .lt {
+  background-color:#274294;
+}
+.cub-16 .rt {
+  background-color:#274294;
+}
+/* .cub-17 styles */
+.cub-17 {
+  transform:translate3D(7.671969696969695em, -0.397316919191919em, 2.48522727272727em) rotateX(0deg) rotateY(90deg) rotateZ(0deg);
+  opacity:1;
+  width:0.05em;
+  height:0.65em;
+  margin:-0.325em 0 0 -0.025em;
+}
+.cub-17 .ft {
+  transform:translateZ(0.75em);
+}
+.cub-17 .bk {
+  transform:translateZ(-0.75em) rotateY(180deg);
+}
+.cub-17 .rt, .cub-17 .lt {
+  width:1.5em;
+  height:0.65em;
+}
+.cub-17 .tp, .cub-17 .bm {
+  width:0.05em;
+  height:1.5em;
+}
+.cub-17 .face {
+  background-color:#FFFFFF;
+}
+.cub-17 .ft {
+  background-color:#adadad;
+}
+.cub-17 .bk {
+  background-color:#adadad;
+}
+.cub-17 .tp {
+  background-color:#adadad;
+}
+.cub-17 .bm {
+  background-color:#adadad;
+}
+.cub-17 .lt {
+  background-color:#274294;
+}
+.cub-17 .rt {
+  background-color:#274294;
+}
+/* .cub-18 styles */
+.cub-18 {
+  transform:translate3D(6.078219696969695em, -0.397316919191919em, 2.48522727272727em) rotateX(0deg) rotateY(90deg) rotateZ(0deg);
+  opacity:1;
+  width:0.05em;
+  height:0.65em;
+  margin:-0.325em 0 0 -0.025em;
+}
+.cub-18 .ft {
+  transform:translateZ(0.75em);
+}
+.cub-18 .bk {
+  transform:translateZ(-0.75em) rotateY(180deg);
+}
+.cub-18 .rt, .cub-18 .lt {
+  width:1.5em;
+  height:0.65em;
+}
+.cub-18 .tp, .cub-18 .bm {
+  width:0.05em;
+  height:1.5em;
+}
+.cub-18 .face {
+  background-color:#FFFFFF;
+}
+.cub-18 .ft {
+  background-color:#adadad;
+}
+.cub-18 .bk {
+  background-color:#adadad;
+}
+.cub-18 .tp {
+  background-color:#adadad;
+}
+.cub-18 .bm {
+  background-color:#adadad;
+}
+.cub-18 .lt {
+  background-color:#274294;
+}
+.cub-18 .rt {
+  background-color:#274294;
+}
+/* .cub-19 styles */
+.cub-19 {
+  transform:translate3D(4.484469696969695em, -0.397316919191919em, 2.48522727272727em) rotateX(0deg) rotateY(90deg) rotateZ(0deg);
+  opacity:1;
+  width:0.05em;
+  height:0.65em;
+  margin:-0.325em 0 0 -0.025em;
+}
+.cub-19 .ft {
+  transform:translateZ(0.75em);
+}
+.cub-19 .bk {
+  transform:translateZ(-0.75em) rotateY(180deg);
+}
+.cub-19 .rt, .cub-19 .lt {
+  width:1.5em;
+  height:0.65em;
+}
+.cub-19 .tp, .cub-19 .bm {
+  width:0.05em;
+  height:1.5em;
+}
+.cub-19 .face {
+  background-color:#FFFFFF;
+}
+.cub-19 .ft {
+  background-color:#adadad;
+}
+.cub-19 .bk {
+  background-color:#adadad;
+}
+.cub-19 .tp {
+  background-color:#adadad;
+}
+.cub-19 .bm {
+  background-color:#adadad;
+}
+.cub-19 .lt {
+  background-color:#274294;
+}
+.cub-19 .rt {
+  background-color:#274294;
+}
+/* .cub-20 styles */
+.cub-20 {
+  transform:translate3D(2.828219696969695em, -0.397316919191919em, 2.48522727272727em) rotateX(0deg) rotateY(90deg) rotateZ(0deg);
+  opacity:1;
+  width:0.05em;
+  height:0.65em;
+  margin:-0.325em 0 0 -0.025em;
+}
+.cub-20 .ft {
+  transform:translateZ(0.75em);
+}
+.cub-20 .bk {
+  transform:translateZ(-0.75em) rotateY(180deg);
+}
+.cub-20 .rt, .cub-20 .lt {
+  width:1.5em;
+  height:0.65em;
+}
+.cub-20 .tp, .cub-20 .bm {
+  width:0.05em;
+  height:1.5em;
+}
+.cub-20 .face {
+  background-color:#FFFFFF;
+}
+.cub-20 .ft {
+  background-color:#adadad;
+}
+.cub-20 .bk {
+  background-color:#adadad;
+}
+.cub-20 .tp {
+  background-color:#adadad;
+}
+.cub-20 .bm {
+  background-color:#adadad;
+}
+.cub-20 .lt {
+  background-color:#274294;
+}
+.cub-20 .rt {
+  background-color:#274294;
+}
+/* .cub-21 styles */
+.cub-21 {
+  transform:translate3D(1.203219696969695em, -0.397316919191919em, 2.48522727272727em) rotateX(0deg) rotateY(90deg) rotateZ(0deg);
+  opacity:1;
+  width:0.05em;
+  height:0.65em;
+  margin:-0.325em 0 0 -0.025em;
+}
+.cub-21 .ft {
+  transform:translateZ(0.75em);
+}
+.cub-21 .bk {
+  transform:translateZ(-0.75em) rotateY(180deg);
+}
+.cub-21 .rt, .cub-21 .lt {
+  width:1.5em;
+  height:0.65em;
+}
+.cub-21 .tp, .cub-21 .bm {
+  width:0.05em;
+  height:1.5em;
+}
+.cub-21 .face {
+  background-color:#FFFFFF;
+}
+.cub-21 .ft {
+  background-color:#adadad;
+}
+.cub-21 .bk {
+  background-color:#adadad;
+}
+.cub-21 .tp {
+  background-color:#adadad;
+}
+.cub-21 .bm {
+  background-color:#adadad;
+}
+.cub-21 .lt {
+  background-color:#274294;
+}
+.cub-21 .rt {
+  background-color:#274294;
+}
+/* .cub-22 styles */
+.cub-22 {
+  transform:translate3D(-0.4217803030303049em, -0.397316919191919em, 2.48522727272727em) rotateX(0deg) rotateY(90deg) rotateZ(0deg);
+  opacity:1;
+  width:0.05em;
+  height:0.65em;
+  margin:-0.325em 0 0 -0.025em;
+}
+.cub-22 .ft {
+  transform:translateZ(0.75em);
+}
+.cub-22 .bk {
+  transform:translateZ(-0.75em) rotateY(180deg);
+}
+.cub-22 .rt, .cub-22 .lt {
+  width:1.5em;
+  height:0.65em;
+}
+.cub-22 .tp, .cub-22 .bm {
+  width:0.05em;
+  height:1.5em;
+}
+.cub-22 .face {
+  background-color:#FFFFFF;
+}
+.cub-22 .ft {
+  background-color:#adadad;
+}
+.cub-22 .bk {
+  background-color:#adadad;
+}
+.cub-22 .tp {
+  background-color:#adadad;
+}
+.cub-22 .bm {
+  background-color:#adadad;
+}
+.cub-22 .lt {
+  background-color:#274294;
+}
+.cub-22 .rt {
+  background-color:#274294;
+}
+/* .cub-23 styles */
+.cub-23 {
+  transform:translate3D(-2.046780303030305em, -0.397316919191919em, 2.48522727272727em) rotateX(0deg) rotateY(90deg) rotateZ(0deg);
+  opacity:1;
+  width:0.05em;
+  height:0.65em;
+  margin:-0.325em 0 0 -0.025em;
+}
+.cub-23 .ft {
+  transform:translateZ(0.75em);
+}
+.cub-23 .bk {
+  transform:translateZ(-0.75em) rotateY(180deg);
+}
+.cub-23 .rt, .cub-23 .lt {
+  width:1.5em;
+  height:0.65em;
+}
+.cub-23 .tp, .cub-23 .bm {
+  width:0.05em;
+  height:1.5em;
+}
+.cub-23 .face {
+  background-color:#FFFFFF;
+}
+.cub-23 .ft {
+  background-color:#adadad;
+}
+.cub-23 .bk {
+  background-color:#adadad;
+}
+.cub-23 .tp {
+  background-color:#adadad;
+}
+.cub-23 .bm {
+  background-color:#adadad;
+}
+.cub-23 .lt {
+  background-color:#274294;
+}
+.cub-23 .rt {
+  background-color:#274294;
+}
+/* .cub-24 styles */
+.cub-24 {
+  transform:translate3D(-3.671780303030305em, -0.397316919191919em, 2.48522727272727em) rotateX(0deg) rotateY(90deg) rotateZ(0deg);
+  opacity:1;
+  width:0.05em;
+  height:0.65em;
+  margin:-0.325em 0 0 -0.025em;
+}
+.cub-24 .ft {
+  transform:translateZ(0.75em);
+}
+.cub-24 .bk {
+  transform:translateZ(-0.75em) rotateY(180deg);
+}
+.cub-24 .rt, .cub-24 .lt {
+  width:1.5em;
+  height:0.65em;
+}
+.cub-24 .tp, .cub-24 .bm {
+  width:0.05em;
+  height:1.5em;
+}
+.cub-24 .face {
+  background-color:#FFFFFF;
+}
+.cub-24 .ft {
+  background-color:#adadad;
+}
+.cub-24 .bk {
+  background-color:#adadad;
+}
+.cub-24 .tp {
+  background-color:#adadad;
+}
+.cub-24 .bm {
+  background-color:#adadad;
+}
+.cub-24 .lt {
+  background-color:#274294;
+}
+.cub-24 .rt {
+  background-color:#274294;
+}
+/* .cub-25 styles */
+.cub-25 {
+  transform:translate3D(-5.265530303030305em, -0.397316919191919em, 2.48522727272727em) rotateX(0deg) rotateY(90deg) rotateZ(0deg);
+  opacity:1;
+  width:0.05em;
+  height:0.65em;
+  margin:-0.325em 0 0 -0.025em;
+}
+.cub-25 .ft {
+  transform:translateZ(0.75em);
+}
+.cub-25 .bk {
+  transform:translateZ(-0.75em) rotateY(180deg);
+}
+.cub-25 .rt, .cub-25 .lt {
+  width:1.5em;
+  height:0.65em;
+}
+.cub-25 .tp, .cub-25 .bm {
+  width:0.05em;
+  height:1.5em;
+}
+.cub-25 .face {
+  background-color:#FFFFFF;
+}
+.cub-25 .ft {
+  background-color:#adadad;
+}
+.cub-25 .bk {
+  background-color:#adadad;
+}
+.cub-25 .tp {
+  background-color:#adadad;
+}
+.cub-25 .bm {
+  background-color:#adadad;
+}
+.cub-25 .lt {
+  background-color:#274294;
+}
+.cub-25 .rt {
+  background-color:#274294;
+}
+/* .cub-26 styles */
+.cub-26 {
+  transform:translate3D(-6.890530303030305em, -0.397316919191919em, 2.48522727272727em) rotateX(0deg) rotateY(90deg) rotateZ(0deg);
+  opacity:1;
+  width:0.05em;
+  height:0.65em;
+  margin:-0.325em 0 0 -0.025em;
+}
+.cub-26 .ft {
+  transform:translateZ(0.75em);
+}
+.cub-26 .bk {
+  transform:translateZ(-0.75em) rotateY(180deg);
+}
+.cub-26 .rt, .cub-26 .lt {
+  width:1.5em;
+  height:0.65em;
+}
+.cub-26 .tp, .cub-26 .bm {
+  width:0.05em;
+  height:1.5em;
+}
+.cub-26 .face {
+  background-color:#FFFFFF;
+}
+.cub-26 .ft {
+  background-color:#adadad;
+}
+.cub-26 .bk {
+  background-color:#adadad;
+}
+.cub-26 .tp {
+  background-color:#adadad;
+}
+.cub-26 .bm {
+  background-color:#adadad;
+}
+.cub-26 .lt {
+  background-color:#274294;
+}
+.cub-26 .rt {
+  background-color:#274294;
+}
+/* .cub-27 styles */
+.cub-27 {
+  transform:translate3D(-8.484280303030305em, -0.397316919191919em, 2.48522727272727em) rotateX(0deg) rotateY(90.1deg) rotateZ(0deg);
+  opacity:1;
+  width:0.05em;
+  height:0.65em;
+  margin:-0.325em 0 0 -0.025em;
+}
+.cub-27 .ft {
+  transform:translateZ(0.75em);
+}
+.cub-27 .bk {
+  transform:translateZ(-0.75em) rotateY(180deg);
+}
+.cub-27 .rt, .cub-27 .lt {
+  width:1.5em;
+  height:0.65em;
+}
+.cub-27 .tp, .cub-27 .bm {
+  width:0.05em;
+  height:1.5em;
+}
+.cub-27 .face {
+  background-color:#FFFFFF;
+}
+.cub-27 .ft {
+  background-color:#adadad;
+}
+.cub-27 .bk {
+  background-color:#adadad;
+}
+.cub-27 .tp {
+  background-color:#adadad;
+}
+.cub-27 .bm {
+  background-color:#adadad;
+}
+.cub-27 .lt {
+  background-color:#274294;
+}
+.cub-27 .rt {
+  background-color:#274294;
+}
+/* .cub-28 styles */
+.cub-28 {
+  transform:translate3D(-9.578030303030305em, -0.397316919191919em, 1.7664772727272702em) rotateX(0deg) rotateY(29.1deg) rotateZ(0deg);
+  opacity:1;
+  width:0.05em;
+  height:0.65em;
+  margin:-0.325em 0 0 -0.025em;
+}
+.cub-28 .ft {
+  transform:translateZ(0.75em);
+}
+.cub-28 .bk {
+  transform:translateZ(-0.75em) rotateY(180deg);
+}
+.cub-28 .rt, .cub-28 .lt {
+  width:1.5em;
+  height:0.65em;
+}
+.cub-28 .tp, .cub-28 .bm {
+  width:0.05em;
+  height:1.5em;
+}
+.cub-28 .face {
+  background-color:#FFFFFF;
+}
+.cub-28 .ft {
+  background-color:#adadad;
+}
+.cub-28 .bk {
+  background-color:#adadad;
+}
+.cub-28 .tp {
+  background-color:#adadad;
+}
+.cub-28 .bm {
+  background-color:#adadad;
+}
+.cub-28 .lt {
+  background-color:#274294;
+}
+.cub-28 .rt {
+  background-color:#274294;
+}
+/* .cub-29 styles */
+.cub-29 {
+  transform:translate3D(6.3695652173913055em, -0.8695652173913043em, -11.76086956521739em) rotateX(0deg) rotateY(0deg) rotateZ(0deg);
+  opacity:1;
+  width:1.875em;
+  height:0.1525em;
+  margin:-0.07625em 0 0 -0.9375em;
+}
+.cub-29 .ft {
+  transform:translateZ(0.025em);
+}
+.cub-29 .bk {
+  transform:translateZ(-0.025em) rotateY(180deg);
+}
+.cub-29 .rt, .cub-29 .lt {
+  width:0.05em;
+  height:0.1525em;
+}
+.cub-29 .tp, .cub-29 .bm {
+  width:1.875em;
+  height:0.05em;
+}
+.cub-29 .face {
+  background-color:#FFFFFF;
+}
 /*===== VARIABLES CSS =====*/
 :root {
 --header-height: 3rem;
@@ -888,4 +2181,588 @@ font-size: 1.8vh;
     </section>
     <script src="assets/js/main.js"></script>
   </body>
+  <div id="tridiv">
+    <div class="scene" style="-webkit-transform:rotateX(-22deg) rotateY(-54deg); -moz-transform:rotateX(-22deg) rotateY(-54deg); -ms-transform:rotateX(-22deg) rotateY(-54deg); transform:rotateX(-22deg) rotateY(-54deg); ">
+      <div class="shape cuboid-1 cub-1">
+        <div class="face ft">
+          <div class="photon-shader" style="background-color: rgba(0, 0, 0, 0.133);"></div>
+        </div>
+        <div class="face bk">
+          <div class="photon-shader" style="background-color: rgba(0, 0, 0, 0.133);"></div>
+        </div>
+        <div class="face rt">
+          <div class="photon-shader" style="background-color: rgba(0, 0, 0, 0.133);"></div>
+        </div>
+        <div class="face lt">
+          <div class="photon-shader" style="background-color: rgba(0, 0, 0, 0.133);"></div>
+        </div>
+        <div class="face bm">
+          <div class="photon-shader" style="background-color: rgba(0, 0, 0, 0.133);"></div>
+        </div>
+        <div class="face tp">
+          <div class="photon-shader" style="background-color: rgba(0, 0, 0, 0.133);"></div>
+        </div>
+      </div>
+      <div class="shape cuboid-2 cub-2">
+        <div class="face ft">
+          <div class="photon-shader" style="background-color: rgba(0, 0, 0, 0.133);"></div>
+        </div>
+        <div class="face bk">
+          <div class="photon-shader" style="background-color: rgba(0, 0, 0, 0.133);"></div>
+        </div>
+        <div class="face rt">
+          <div class="photon-shader" style="background-color: rgba(0, 0, 0, 0.133);"></div>
+        </div>
+        <div class="face lt">
+          <div class="photon-shader" style="background-color: rgba(0, 0, 0, 0.133);"></div>
+        </div>
+        <div class="face bm">
+          <div class="photon-shader" style="background-color: rgba(0, 0, 0, 0.133);"></div>
+        </div>
+        <div class="face tp">
+          <div class="photon-shader" style="background-color: rgba(0, 0, 0, 0.133);"></div>
+        </div>
+      </div>
+      <div class="shape cuboid-3 cub-3">
+        <div class="face ft">
+          <div class="photon-shader" style="background-color: rgba(0, 0, 0, 0.133);"></div>
+        </div>
+        <div class="face bk">
+          <div class="photon-shader" style="background-color: rgba(0, 0, 0, 0.133);"></div>
+        </div>
+        <div class="face rt">
+          <div class="photon-shader" style="background-color: rgba(0, 0, 0, 0.133);"></div>
+        </div>
+        <div class="face lt">
+          <div class="photon-shader" style="background-color: rgba(0, 0, 0, 0.133);"></div>
+        </div>
+        <div class="face bm">
+          <div class="photon-shader" style="background-color: rgba(0, 0, 0, 0.133);"></div>
+        </div>
+        <div class="face tp">
+          <div class="photon-shader" style="background-color: rgba(0, 0, 0, 0.133);"></div>
+        </div>
+      </div>
+      <div class="shape cuboid-4 cub-4">
+        <div class="face ft">
+          <div class="photon-shader" style="background-color: rgba(0, 0, 0, 0.133);"></div>
+        </div>
+        <div class="face bk">
+          <div class="photon-shader" style="background-color: rgba(0, 0, 0, 0.133);"></div>
+        </div>
+        <div class="face rt">
+          <div class="photon-shader" style="background-color: rgba(0, 0, 0, 0.133);"></div>
+        </div>
+        <div class="face lt">
+          <div class="photon-shader" style="background-color: rgba(0, 0, 0, 0.133);"></div>
+        </div>
+        <div class="face bm">
+          <div class="photon-shader" style="background-color: rgba(0, 0, 0, 0.133);"></div>
+        </div>
+        <div class="face tp">
+          <div class="photon-shader" style="background-color: rgba(0, 0, 0, 0.133);"></div>
+        </div>
+      </div>
+      <div class="shape cuboid-5 cub-5">
+        <div class="face ft">
+          <div class="photon-shader" style="background-color: rgba(0, 0, 0, 0.133);"></div>
+        </div>
+        <div class="face bk">
+          <div class="photon-shader" style="background-color: rgba(0, 0, 0, 0.133);"></div>
+        </div>
+        <div class="face rt">
+          <div class="photon-shader" style="background-color: rgba(0, 0, 0, 0.133);"></div>
+        </div>
+        <div class="face lt">
+          <div class="photon-shader" style="background-color: rgba(0, 0, 0, 0.133);"></div>
+        </div>
+        <div class="face bm">
+          <div class="photon-shader" style="background-color: rgba(0, 0, 0, 0.133);"></div>
+        </div>
+        <div class="face tp">
+          <div class="photon-shader" style="background-color: rgba(0, 0, 0, 0.133);"></div>
+        </div>
+      </div>
+      <div class="shape cuboid-6 cub-6">
+        <div class="face ft">
+          <div class="photon-shader" style="background-color: rgba(0, 0, 0, 0.133);"></div>
+        </div>
+        <div class="face bk">
+          <div class="photon-shader" style="background-color: rgba(0, 0, 0, 0.133);"></div>
+        </div>
+        <div class="face rt">
+          <div class="photon-shader" style="background-color: rgba(0, 0, 0, 0.133);"></div>
+        </div>
+        <div class="face lt">
+          <div class="photon-shader" style="background-color: rgba(0, 0, 0, 0.133);"></div>
+        </div>
+        <div class="face bm">
+          <div class="photon-shader" style="background-color: rgba(0, 0, 0, 0.133);"></div>
+        </div>
+        <div class="face tp">
+          <div class="photon-shader" style="background-color: rgba(0, 0, 0, 0.133);"></div>
+        </div>
+      </div>
+      <div class="shape cuboid-7 cub-7">
+        <div class="face ft">
+          <div class="photon-shader" style="background-color: rgba(0, 0, 0, 0.133);"></div>
+        </div>
+        <div class="face bk">
+          <div class="photon-shader" style="background-color: rgba(0, 0, 0, 0.133);"></div>
+        </div>
+        <div class="face rt">
+          <div class="photon-shader" style="background-color: rgba(0, 0, 0, 0.133);"></div>
+        </div>
+        <div class="face lt">
+          <div class="photon-shader" style="background-color: rgba(0, 0, 0, 0.133);"></div>
+        </div>
+        <div class="face bm">
+          <div class="photon-shader" style="background-color: rgba(0, 0, 0, 0.133);"></div>
+        </div>
+        <div class="face tp">
+          <div class="photon-shader" style="background-color: rgba(0, 0, 0, 0.133);"></div>
+        </div>
+      </div>
+      <div class="shape cuboid-8 cub-8">
+        <div class="face ft">
+          <div class="photon-shader" style="background-color: rgba(0, 0, 0, 0.133);"></div>
+        </div>
+        <div class="face bk">
+          <div class="photon-shader" style="background-color: rgba(0, 0, 0, 0.133);"></div>
+        </div>
+        <div class="face rt">
+          <div class="photon-shader" style="background-color: rgba(0, 0, 0, 0.133);"></div>
+        </div>
+        <div class="face lt">
+          <div class="photon-shader" style="background-color: rgba(0, 0, 0, 0.133);"></div>
+        </div>
+        <div class="face bm">
+          <div class="photon-shader" style="background-color: rgba(0, 0, 0, 0.133);"></div>
+        </div>
+        <div class="face tp">
+          <div class="photon-shader" style="background-color: rgba(0, 0, 0, 0.133);"></div>
+        </div>
+      </div>
+      <div class="shape cuboid-9 cub-9">
+        <div class="face ft">
+          <div class="photon-shader" style="background-color: rgba(0, 0, 0, 0.133);"></div>
+        </div>
+        <div class="face bk">
+          <div class="photon-shader" style="background-color: rgba(0, 0, 0, 0.133);"></div>
+        </div>
+        <div class="face rt">
+          <div class="photon-shader" style="background-color: rgba(0, 0, 0, 0.133);"></div>
+        </div>
+        <div class="face lt">
+          <div class="photon-shader" style="background-color: rgba(0, 0, 0, 0.133);"></div>
+        </div>
+        <div class="face bm">
+          <div class="photon-shader" style="background-color: rgba(0, 0, 0, 0.133);"></div>
+        </div>
+        <div class="face tp">
+          <div class="photon-shader" style="background-color: rgba(0, 0, 0, 0.133);"></div>
+        </div>
+      </div>
+      <div class="shape cuboid-10 cub-10">
+        <div class="face ft">
+          <div class="photon-shader" style="background-color: rgba(0, 0, 0, 0.133);"></div>
+        </div>
+        <div class="face bk">
+          <div class="photon-shader" style="background-color: rgba(0, 0, 0, 0.133);"></div>
+        </div>
+        <div class="face rt">
+          <div class="photon-shader" style="background-color: rgba(0, 0, 0, 0.133);"></div>
+        </div>
+        <div class="face lt">
+          <div class="photon-shader" style="background-color: rgba(0, 0, 0, 0.133);"></div>
+        </div>
+        <div class="face bm">
+          <div class="photon-shader" style="background-color: rgba(0, 0, 0, 0.133);"></div>
+        </div>
+        <div class="face tp">
+          <div class="photon-shader" style="background-color: rgba(0, 0, 0, 0.133);"></div>
+        </div>
+      </div>
+      <div class="shape cuboid-11 cub-11">
+        <div class="face ft">
+          <div class="photon-shader" style="background-color: rgba(0, 0, 0, 0.133);"></div>
+        </div>
+        <div class="face bk">
+          <div class="photon-shader" style="background-color: rgba(0, 0, 0, 0.133);"></div>
+        </div>
+        <div class="face rt">
+          <div class="photon-shader" style="background-color: rgba(0, 0, 0, 0.133);"></div>
+        </div>
+        <div class="face lt">
+          <div class="photon-shader" style="background-color: rgba(0, 0, 0, 0.133);"></div>
+        </div>
+        <div class="face bm">
+          <div class="photon-shader" style="background-color: rgba(0, 0, 0, 0.133);"></div>
+        </div>
+        <div class="face tp">
+          <div class="photon-shader" style="background-color: rgba(0, 0, 0, 0.133);"></div>
+        </div>
+      </div>
+      <div class="shape cuboid-12 cub-12">
+        <div class="face ft">
+          <div class="photon-shader" style="background-color: rgba(0, 0, 0, 0.133);"></div>
+        </div>
+        <div class="face bk">
+          <div class="photon-shader" style="background-color: rgba(0, 0, 0, 0.133);"></div>
+        </div>
+        <div class="face rt">
+          <div class="photon-shader" style="background-color: rgba(0, 0, 0, 0.133);"></div>
+        </div>
+        <div class="face lt">
+          <div class="photon-shader" style="background-color: rgba(0, 0, 0, 0.133);"></div>
+        </div>
+        <div class="face bm">
+          <div class="photon-shader" style="background-color: rgba(0, 0, 0, 0.133);"></div>
+        </div>
+        <div class="face tp">
+          <div class="photon-shader" style="background-color: rgba(0, 0, 0, 0.133);"></div>
+        </div>
+      </div>
+      <div class="shape cuboid-13 cub-13">
+        <div class="face ft">
+          <div class="photon-shader" style="background-color: rgba(0, 0, 0, 0.133);"></div>
+        </div>
+        <div class="face bk">
+          <div class="photon-shader" style="background-color: rgba(0, 0, 0, 0.133);"></div>
+        </div>
+        <div class="face rt">
+          <div class="photon-shader" style="background-color: rgba(0, 0, 0, 0.133);"></div>
+        </div>
+        <div class="face lt">
+          <div class="photon-shader" style="background-color: rgba(0, 0, 0, 0.133);"></div>
+        </div>
+        <div class="face bm">
+          <div class="photon-shader" style="background-color: rgba(0, 0, 0, 0.133);"></div>
+        </div>
+        <div class="face tp">
+          <div class="photon-shader" style="background-color: rgba(0, 0, 0, 0.133);"></div>
+        </div>
+      </div>
+      <div class="shape cuboid-14 cub-14">
+        <div class="face ft">
+          <div class="photon-shader" style="background-color: rgba(0, 0, 0, 0.133);"></div>
+        </div>
+        <div class="face bk">
+          <div class="photon-shader" style="background-color: rgba(0, 0, 0, 0.133);"></div>
+        </div>
+        <div class="face rt">
+          <div class="photon-shader" style="background-color: rgba(0, 0, 0, 0.133);"></div>
+        </div>
+        <div class="face lt">
+          <div class="photon-shader" style="background-color: rgba(0, 0, 0, 0.133);"></div>
+        </div>
+        <div class="face bm">
+          <div class="photon-shader" style="background-color: rgba(0, 0, 0, 0.133);"></div>
+        </div>
+        <div class="face tp">
+          <div class="photon-shader" style="background-color: rgba(0, 0, 0, 0.133);"></div>
+        </div>
+      </div>
+      <div class="shape cuboid-15 cub-15">
+        <div class="face ft">
+          <div class="photon-shader" style="background-color: rgba(255, 255, 255, 0.047);"></div>
+        </div>
+        <div class="face bk">
+          <div class="photon-shader" style="background-color: rgba(255, 255, 255, 0.047);"></div>
+        </div>
+        <div class="face rt">
+          <div class="photon-shader" style="background-color: rgba(255, 255, 255, 0.047);"></div>
+        </div>
+        <div class="face lt">
+          <div class="photon-shader" style="background-color: rgba(255, 255, 255, 0.047);"></div>
+        </div>
+        <div class="face bm">
+          <div class="photon-shader" style="background-color: rgba(255, 255, 255, 0.047);"></div>
+        </div>
+        <div class="face tp">
+          <div class="photon-shader" style="background-color: rgba(255, 255, 255, 0.047);"></div>
+        </div>
+      </div>
+      <div class="shape cuboid-16 cub-16">
+        <div class="face ft">
+          <div class="photon-shader" style="background-color: rgba(0, 0, 0, 0.133);"></div>
+        </div>
+        <div class="face bk">
+          <div class="photon-shader" style="background-color: rgba(0, 0, 0, 0.133);"></div>
+        </div>
+        <div class="face rt">
+          <div class="photon-shader" style="background-color: rgba(0, 0, 0, 0.133);"></div>
+        </div>
+        <div class="face lt">
+          <div class="photon-shader" style="background-color: rgba(0, 0, 0, 0.133);"></div>
+        </div>
+        <div class="face bm">
+          <div class="photon-shader" style="background-color: rgba(0, 0, 0, 0.133);"></div>
+        </div>
+        <div class="face tp">
+          <div class="photon-shader" style="background-color: rgba(0, 0, 0, 0.133);"></div>
+        </div>
+      </div>
+      <div class="shape cuboid-17 cub-17">
+        <div class="face ft">
+          <div class="photon-shader" style="background-color: rgba(0, 0, 0, 0.133);"></div>
+        </div>
+        <div class="face bk">
+          <div class="photon-shader" style="background-color: rgba(0, 0, 0, 0.133);"></div>
+        </div>
+        <div class="face rt">
+          <div class="photon-shader" style="background-color: rgba(0, 0, 0, 0.133);"></div>
+        </div>
+        <div class="face lt">
+          <div class="photon-shader" style="background-color: rgba(0, 0, 0, 0.133);"></div>
+        </div>
+        <div class="face bm">
+          <div class="photon-shader" style="background-color: rgba(0, 0, 0, 0.133);"></div>
+        </div>
+        <div class="face tp">
+          <div class="photon-shader" style="background-color: rgba(0, 0, 0, 0.133);"></div>
+        </div>
+      </div>
+      <div class="shape cuboid-18 cub-18">
+        <div class="face ft">
+          <div class="photon-shader" style="background-color: rgba(0, 0, 0, 0.133);"></div>
+        </div>
+        <div class="face bk">
+          <div class="photon-shader" style="background-color: rgba(0, 0, 0, 0.133);"></div>
+        </div>
+        <div class="face rt">
+          <div class="photon-shader" style="background-color: rgba(0, 0, 0, 0.133);"></div>
+        </div>
+        <div class="face lt">
+          <div class="photon-shader" style="background-color: rgba(0, 0, 0, 0.133);"></div>
+        </div>
+        <div class="face bm">
+          <div class="photon-shader" style="background-color: rgba(0, 0, 0, 0.133);"></div>
+        </div>
+        <div class="face tp">
+          <div class="photon-shader" style="background-color: rgba(0, 0, 0, 0.133);"></div>
+        </div>
+      </div>
+      <div class="shape cuboid-19 cub-19">
+        <div class="face ft">
+          <div class="photon-shader" style="background-color: rgba(0, 0, 0, 0.133);"></div>
+        </div>
+        <div class="face bk">
+          <div class="photon-shader" style="background-color: rgba(0, 0, 0, 0.133);"></div>
+        </div>
+        <div class="face rt">
+          <div class="photon-shader" style="background-color: rgba(0, 0, 0, 0.133);"></div>
+        </div>
+        <div class="face lt">
+          <div class="photon-shader" style="background-color: rgba(0, 0, 0, 0.133);"></div>
+        </div>
+        <div class="face bm">
+          <div class="photon-shader" style="background-color: rgba(0, 0, 0, 0.133);"></div>
+        </div>
+        <div class="face tp">
+          <div class="photon-shader" style="background-color: rgba(0, 0, 0, 0.133);"></div>
+        </div>
+      </div>
+      <div class="shape cuboid-20 cub-20">
+        <div class="face ft">
+          <div class="photon-shader" style="background-color: rgba(0, 0, 0, 0.133);"></div>
+        </div>
+        <div class="face bk">
+          <div class="photon-shader" style="background-color: rgba(0, 0, 0, 0.133);"></div>
+        </div>
+        <div class="face rt">
+          <div class="photon-shader" style="background-color: rgba(0, 0, 0, 0.133);"></div>
+        </div>
+        <div class="face lt">
+          <div class="photon-shader" style="background-color: rgba(0, 0, 0, 0.133);"></div>
+        </div>
+        <div class="face bm">
+          <div class="photon-shader" style="background-color: rgba(0, 0, 0, 0.133);"></div>
+        </div>
+        <div class="face tp">
+          <div class="photon-shader" style="background-color: rgba(0, 0, 0, 0.133);"></div>
+        </div>
+      </div>
+      <div class="shape cuboid-21 cub-21">
+        <div class="face ft">
+          <div class="photon-shader" style="background-color: rgba(0, 0, 0, 0.133);"></div>
+        </div>
+        <div class="face bk">
+          <div class="photon-shader" style="background-color: rgba(0, 0, 0, 0.133);"></div>
+        </div>
+        <div class="face rt">
+          <div class="photon-shader" style="background-color: rgba(0, 0, 0, 0.133);"></div>
+        </div>
+        <div class="face lt">
+          <div class="photon-shader" style="background-color: rgba(0, 0, 0, 0.133);"></div>
+        </div>
+        <div class="face bm">
+          <div class="photon-shader" style="background-color: rgba(0, 0, 0, 0.133);"></div>
+        </div>
+        <div class="face tp">
+          <div class="photon-shader" style="background-color: rgba(0, 0, 0, 0.133);"></div>
+        </div>
+      </div>
+      <div class="shape cuboid-22 cub-22">
+        <div class="face ft">
+          <div class="photon-shader" style="background-color: rgba(0, 0, 0, 0.133);"></div>
+        </div>
+        <div class="face bk">
+          <div class="photon-shader" style="background-color: rgba(0, 0, 0, 0.133);"></div>
+        </div>
+        <div class="face rt">
+          <div class="photon-shader" style="background-color: rgba(0, 0, 0, 0.133);"></div>
+        </div>
+        <div class="face lt">
+          <div class="photon-shader" style="background-color: rgba(0, 0, 0, 0.133);"></div>
+        </div>
+        <div class="face bm">
+          <div class="photon-shader" style="background-color: rgba(0, 0, 0, 0.133);"></div>
+        </div>
+        <div class="face tp">
+          <div class="photon-shader" style="background-color: rgba(0, 0, 0, 0.133);"></div>
+        </div>
+      </div>
+      <div class="shape cuboid-23 cub-23">
+        <div class="face ft">
+          <div class="photon-shader" style="background-color: rgba(0, 0, 0, 0.133);"></div>
+        </div>
+        <div class="face bk">
+          <div class="photon-shader" style="background-color: rgba(0, 0, 0, 0.133);"></div>
+        </div>
+        <div class="face rt">
+          <div class="photon-shader" style="background-color: rgba(0, 0, 0, 0.133);"></div>
+        </div>
+        <div class="face lt">
+          <div class="photon-shader" style="background-color: rgba(0, 0, 0, 0.133);"></div>
+        </div>
+        <div class="face bm">
+          <div class="photon-shader" style="background-color: rgba(0, 0, 0, 0.133);"></div>
+        </div>
+        <div class="face tp">
+          <div class="photon-shader" style="background-color: rgba(0, 0, 0, 0.133);"></div>
+        </div>
+      </div>
+      <div class="shape cuboid-24 cub-24">
+        <div class="face ft">
+          <div class="photon-shader" style="background-color: rgba(0, 0, 0, 0.133);"></div>
+        </div>
+        <div class="face bk">
+          <div class="photon-shader" style="background-color: rgba(0, 0, 0, 0.133);"></div>
+        </div>
+        <div class="face rt">
+          <div class="photon-shader" style="background-color: rgba(0, 0, 0, 0.133);"></div>
+        </div>
+        <div class="face lt">
+          <div class="photon-shader" style="background-color: rgba(0, 0, 0, 0.133);"></div>
+        </div>
+        <div class="face bm">
+          <div class="photon-shader" style="background-color: rgba(0, 0, 0, 0.133);"></div>
+        </div>
+        <div class="face tp">
+          <div class="photon-shader" style="background-color: rgba(0, 0, 0, 0.133);"></div>
+        </div>
+      </div>
+      <div class="shape cuboid-25 cub-25">
+        <div class="face ft">
+          <div class="photon-shader" style="background-color: rgba(0, 0, 0, 0.133);"></div>
+        </div>
+        <div class="face bk">
+          <div class="photon-shader" style="background-color: rgba(0, 0, 0, 0.133);"></div>
+        </div>
+        <div class="face rt">
+          <div class="photon-shader" style="background-color: rgba(0, 0, 0, 0.133);"></div>
+        </div>
+        <div class="face lt">
+          <div class="photon-shader" style="background-color: rgba(0, 0, 0, 0.133);"></div>
+        </div>
+        <div class="face bm">
+          <div class="photon-shader" style="background-color: rgba(0, 0, 0, 0.133);"></div>
+        </div>
+        <div class="face tp">
+          <div class="photon-shader" style="background-color: rgba(0, 0, 0, 0.133);"></div>
+        </div>
+      </div>
+      <div class="shape cuboid-26 cub-26">
+        <div class="face ft">
+          <div class="photon-shader" style="background-color: rgba(0, 0, 0, 0.133);"></div>
+        </div>
+        <div class="face bk">
+          <div class="photon-shader" style="background-color: rgba(0, 0, 0, 0.133);"></div>
+        </div>
+        <div class="face rt">
+          <div class="photon-shader" style="background-color: rgba(0, 0, 0, 0.133);"></div>
+        </div>
+        <div class="face lt">
+          <div class="photon-shader" style="background-color: rgba(0, 0, 0, 0.133);"></div>
+        </div>
+        <div class="face bm">
+          <div class="photon-shader" style="background-color: rgba(0, 0, 0, 0.133);"></div>
+        </div>
+        <div class="face tp">
+          <div class="photon-shader" style="background-color: rgba(0, 0, 0, 0.133);"></div>
+        </div>
+      </div>
+      <div class="shape cuboid-27 cub-27">
+        <div class="face ft">
+          <div class="photon-shader" style="background-color: rgba(0, 0, 0, 0.043);"></div>
+        </div>
+        <div class="face bk">
+          <div class="photon-shader" style="background-color: rgba(0, 0, 0, 0.043);"></div>
+        </div>
+        <div class="face rt">
+          <div class="photon-shader" style="background-color: rgba(0, 0, 0, 0.043);"></div>
+        </div>
+        <div class="face lt">
+          <div class="photon-shader" style="background-color: rgba(0, 0, 0, 0.043);"></div>
+        </div>
+        <div class="face bm">
+          <div class="photon-shader" style="background-color: rgba(0, 0, 0, 0.043);"></div>
+        </div>
+        <div class="face tp">
+          <div class="photon-shader" style="background-color: rgba(0, 0, 0, 0.043);"></div>
+        </div>
+      </div>
+      <div class="shape cuboid-28 cub-28">
+        <div class="face ft">
+          <div class="photon-shader" style="background-color: rgba(0, 0, 0, 0.008);"></div>
+        </div>
+        <div class="face bk">
+          <div class="photon-shader" style="background-color: rgba(0, 0, 0, 0.008);"></div>
+        </div>
+        <div class="face rt">
+          <div class="photon-shader" style="background-color: rgba(0, 0, 0, 0.008);"></div>
+        </div>
+        <div class="face lt">
+          <div class="photon-shader" style="background-color: rgba(0, 0, 0, 0.008);"></div>
+        </div>
+        <div class="face bm">
+          <div class="photon-shader" style="background-color: rgba(0, 0, 0, 0.008);"></div>
+        </div>
+        <div class="face tp">
+          <div class="photon-shader" style="background-color: rgba(0, 0, 0, 0.008);"></div>
+        </div>
+      </div>
+      <div class="shape cuboid-29 cub-29">
+        <div class="face ft">
+          <div class="photon-shader" style="background-color: rgba(0, 0, 0, 0.133);"></div>
+        </div>
+        <div class="face bk">
+          <div class="photon-shader" style="background-color: rgba(0, 0, 0, 0.133);"></div>
+        </div>
+        <div class="face rt">
+          <div class="photon-shader" style="background-color: rgba(0, 0, 0, 0.133);"></div>
+        </div>
+        <div class="face lt">
+          <div class="photon-shader" style="background-color: rgba(0, 0, 0, 0.133);"></div>
+        </div>
+        <div class="face bm">
+          <div class="photon-shader" style="background-color: rgba(0, 0, 0, 0.133);"></div>
+        </div>
+        <div class="face tp">
+          <div class="photon-shader" style="background-color: rgba(0, 0, 0, 0.133);"></div>
+        </div>
+      </div>
+    </div>
+  </div>
 </html>
