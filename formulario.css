@@ -3,9 +3,9 @@
 /*===== VARIABLES CSS =====*/
 :root{
   /*===== Colores =====*/
-  --first-color: white;
-  --input-color: white;
-  --border-color: white;
+  --first-color: green;
+  --input-color: #010b76;
+  --border-color: #010b76;
 
   /*===== Fuente y tipografia =====*/
   --body-font: 'Roboto', sans-serif;
@@ -59,14 +59,14 @@ body{
   padding: 1rem;
   background: none;
   z-index: 1;
-  color:white;
+  color:var(--input-color);
 }
 .form__label{
   position: absolute;
   left: 1rem;
   top: 0.75rem;
   padding: 0 .25rem;
-  background-color: #052f6e;
+  background-color: white;
   color: var(--input-color);
   font-size: var(--normal-font-size);
   transition: .3s;

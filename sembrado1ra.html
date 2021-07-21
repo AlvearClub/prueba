@@ -385,7 +385,7 @@ $.getJSON(url, function (json) {
       // ADD JSON DATA TO THE TABLE AS ROWS.
       for (var i = 1; i < json.records.length; i++) {
 
-        if ( json.records[i-1].CATEGORIAS.includes('1ra') &&  json.records[i-1].PUNTAJETMT > -1 && w<24  ) {
+        if ( json.records[i-1].CATEGORIAS.includes('1ra') &&  json.records[i-1].PUNTAJETMT > -1 && w<30  ) {
 
           matriz [w]= [ json.records[i-1].NOMBRES , json.records[i-1].CLUB , json.records[i-1].PUNTAJETMT , ""];
           jugadoresCant= jugadoresCant+1;
@@ -479,6 +479,24 @@ $.getJSON(url, function (json) {
             contador--;
 
           }
+          else if( ((zonasCant*8) - 1) < i && i < (zonasCant*9) ){
+
+            contador++;   
+            matriz[i][3] = abecedario[contador];
+
+          }
+          else if( ((zonasCant*9) - 1) < i && i  < (zonasCant*10)  ){
+
+            matriz[i][3] = abecedario[contador];
+            contador--;
+
+          }
+          else if( ((zonasCant*10) - 1) < i && i < (zonasCant*11) ){
+
+            contador++;   
+            matriz[i][3] = abecedario[contador];
+
+          }
 
         }
         
@@ -561,9 +579,9 @@ $.getJSON(url, function (json) {
                             
 
                         <ul class="dropdowne__menu">
-                            <li class="dropdowne__item"><a href="listado4ta.html" class="nave__link">6ta Categoría</a></li>
-                            <li class="dropdowne__item"><a href="listado3ra.html" class="nave__link">5ta Categoría</a></li>
-                            <li class="dropdowne__item"><a href="listado2da.html" class="nave__link">4ta Categoría</a></li>
+                            <li class="dropdowne__item"><a href="listado4ta.html" class="nave__link">5ta Categoría</a></li>
+                            <li class="dropdowne__item"><a href="listado3ra.html" class="nave__link">4ta Categoría</a></li>
+                            <li class="dropdowne__item"><a href="listado2da.html" class="nave__link">2da Categoría</a></li>
                             <li class="dropdowne__item"><a href="listado1ra.html" class="nave__link">1ra Categoría</a></li>
                         </ul>
                     </li>
@@ -573,9 +591,9 @@ $.getJSON(url, function (json) {
                             
 
                         <ul class="dropdowne__menu">
-                            <li class="dropdowne__item"><a href="sembrado4ta.html" class="nave__link">6ta Categoría</a></li>
-                            <li class="dropdowne__item"><a href="sembrado3ra.html" class="nave__link">5ta Categoría</a></li>
-                            <li class="dropdowne__item"><a href="sembrado2da.html" class="nave__link">4ta Categoría</a></li>
+                            <li class="dropdowne__item"><a href="sembrado4ta.html" class="nave__link">5ta Categoría</a></li>
+                            <li class="dropdowne__item"><a href="sembrado3ra.html" class="nave__link">4ta Categoría</a></li>
+                            <li class="dropdowne__item"><a href="sembrado2da.html" class="nave__link">2da Categoría</a></li>
                             <li class="dropdowne__item"><a href="sembrado1ra.html" class="nave__link">1ra Categoría</a></li>
                         </ul>
                     </li>
