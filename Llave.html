@@ -28,6 +28,10 @@
         font-weight:bold;
         font-family: inherit;
       }
+      
+      h5{
+        font-size: 20px;
+      }
   #loader {
   border: 16px solid white;
   border-radius: 50%;
@@ -381,7 +385,7 @@ $.getJSON(url, function (json) {
 
     var header = table.createTHead();
 		var row = header.insertRow(0);
-
+    var CantEspacios=0; //Cantidad de veces que se va a dejar espacios para la impresion vertical
         // ADD JSON DATA TO THE TABLE AS ROWS.
         //var cell1 = row.insertCell(0);
         //cell1.innerHTML = "<b>Final</b>";
@@ -389,37 +393,41 @@ $.getJSON(url, function (json) {
           //Titulos de las llaves
           if(json.records[0].DIECISEIS.includes('active')){
             var tabCell = tr.insertCell(-1);
-            tabCell.innerHTML= ("<h5>16avos de Final</h5>");
+            tabCell.innerHTML= ("<bdi>16avos de Final</bdi>");
+            CantEspacios++;
           }
           if(json.records[0].OCTAVOS.includes('active')){
             var tabCell = tr.insertCell(-1);
-            tabCell.innerHTML= ("<h5>8vos de Final</h5>");
+            tabCell.innerHTML= ("<bdi>8vos de Final</bdi>");
+            CantEspacios++;
           }
           if(json.records[0].CUARTOS.includes('active')){
             var tabCell = tr.insertCell(-1);
-            tabCell.innerHTML= ("<h5>4tos de Final</h5>");
+            tabCell.innerHTML= ("<bdi>4tos de Final</bdi>");
+            CantEspacios++;
           }
           if(json.records[0].SEMIS.includes('active')){
             var tabCell = tr.insertCell(-1);
-            tabCell.innerHTML= ("<h5>Semifinal</h5>");
+            tabCell.innerHTML= ("<bdi>Semifinal</bdi>");
+            CantEspacios++;
           }
           var tabCell = tr.insertCell(-1);
           tabCell.innerHTML= ("&nbsp");
           if(json.records[0].SEMIS.includes('active')){
             var tabCell = tr.insertCell(-1);
-            tabCell.innerHTML= ("<h5>Semifinal</h5>");
+            tabCell.innerHTML= ("<bdi>Semifinal</bdi>");
           }
           if(json.records[0].CUARTOS.includes('active')){
             var tabCell = tr.insertCell(-1);
-            tabCell.innerHTML= ("<h5>4tos de Final</h5>");
+            tabCell.innerHTML= ("<bdi>4tos de Final</bdi>");
           }
           if(json.records[0].OCTAVOS.includes('active')){
             var tabCell = tr.insertCell(-1);
-            tabCell.innerHTML= ("<h5>8vos de Final</h5>");
+            tabCell.innerHTML= ("<bdi>8vos de Final</bdi>");
           }
           if(json.records[0].DIECISEIS.includes('active')){
             var tabCell = tr.insertCell(-1);
-            tabCell.innerHTML= ("<h5>16avos de Final</h5>");
+            tabCell.innerHTML= ("<bdi>16avos de Final</bdi>");
           }
           
 
@@ -473,6 +481,7 @@ $.getJSON(url, function (json) {
           }
           
 
+      
         
         
         //Impresion vertical de las llaves
@@ -483,13 +492,13 @@ $.getJSON(url, function (json) {
           tabCell.innerHTML= ("&nbsp");
           tr = table.insertRow(-1);
           //Cantidad de saltos segun la llave
-          var tabCell = tr.insertCell(-1);
-            tabCell.innerHTML= ("&nbsp");
+          for(var k=0; k < CantEspacios; k++){
             var tabCell = tr.insertCell(-1);
             tabCell.innerHTML= ("&nbsp");
-            //Final de los dos saltos
+          }
+          //Final de los dos saltos
           var tabCell = tr.insertCell(-1);
-          tabCell.innerHTML= ("<h5>16avos de Final</h5>");
+          tabCell.innerHTML= ("<bdi>16avos de Final</bdi>");
 
           tr = table.insertRow(-1);
           var tabCell = tr.insertCell(-1);
@@ -500,31 +509,31 @@ $.getJSON(url, function (json) {
             tr = table.insertRow(-1);
             var tabCell = tr.insertCell(-1);
             //Cantidad de saltos segun la llave
+          for(var k=0; k < CantEspacios; k++){
             var tabCell = tr.insertCell(-1);
             tabCell.innerHTML= ("&nbsp");
-            var tabCell = tr.insertCell(-1);
-            tabCell.innerHTML= ("&nbsp");
-            //Final de los dos saltos
+          }
+          //Final de los dos saltos
             tabCell.innerHTML = json.records[i-1].DIECISEIS;
             if(i%4==0){
               tr = table.insertRow(-1);
               //Cantidad de saltos segun la llave
+          for(var k=0; k < CantEspacios; k++){
             var tabCell = tr.insertCell(-1);
             tabCell.innerHTML= ("&nbsp");
-            var tabCell = tr.insertCell(-1);
-            tabCell.innerHTML= ("&nbsp");
-            //Final de los dos saltos
+          }
+          //Final de los dos saltos
               var tabCell = tr.insertCell(-1);
               tabCell.innerHTML = "<b>------------------</b>";
             }
             if(i==3||i==7||i==11||i==15||i==19||i==23||i==27||i==31){
               tr = table.insertRow(-1);
-              //Cantidad de saltos segun la llave
+             //Cantidad de saltos segun la llave
+          for(var k=0; k < CantEspacios; k++){
             var tabCell = tr.insertCell(-1);
             tabCell.innerHTML= ("&nbsp");
-            var tabCell = tr.insertCell(-1);
-            tabCell.innerHTML= ("&nbsp");
-            //Final de los dos saltos
+          }
+          //Final de los dos saltos
               var tabCell = tr.insertCell(-1);
               tabCell.innerHTML = '<b class="versus">VS</b>';
             }
@@ -538,13 +547,13 @@ $.getJSON(url, function (json) {
           tabCell.innerHTML= ("&nbsp");
           tr = table.insertRow(-1);
           //Cantidad de saltos segun la llave
-          var tabCell = tr.insertCell(-1);
-            tabCell.innerHTML= ("&nbsp");
+          for(var k=0; k < CantEspacios; k++){
             var tabCell = tr.insertCell(-1);
             tabCell.innerHTML= ("&nbsp");
-            //Final de los dos saltos
+          }
+          //Final de los dos saltos
           var tabCell = tr.insertCell(-1);
-          tabCell.innerHTML= ("<h5>8avos de Final</h5>");
+          tabCell.innerHTML= ("<bdi>8avos de Final</bdi>");
           tr = table.insertRow(-1);
           var tabCell = tr.insertCell(-1);
           tabCell.innerHTML= ("&nbsp");
@@ -552,32 +561,32 @@ $.getJSON(url, function (json) {
 
             tr = table.insertRow(-1);
             //Cantidad de saltos segun la llave
+          for(var k=0; k < CantEspacios; k++){
             var tabCell = tr.insertCell(-1);
             tabCell.innerHTML= ("&nbsp");
-            var tabCell = tr.insertCell(-1);
-            tabCell.innerHTML= ("&nbsp");
-            //Final de los dos saltos
+          }
+          //Final de los dos saltos
             var tabCell = tr.insertCell(-1);
             tabCell.innerHTML = json.records[i-1].OCTAVOS;
             if(i%8==0){
               tr = table.insertRow(-1);
               //Cantidad de saltos segun la llave
+          for(var k=0; k < CantEspacios; k++){
             var tabCell = tr.insertCell(-1);
             tabCell.innerHTML= ("&nbsp");
-            var tabCell = tr.insertCell(-1);
-            tabCell.innerHTML= ("&nbsp");
-            //Final de los dos saltos
+          }
+          //Final de los dos saltos
               var tabCell = tr.insertCell(-1);
               tabCell.innerHTML = "<b>------------------</b>";
             }
             if(i==4||i==12||i==20||i==28){
               tr = table.insertRow(-1);
               //Cantidad de saltos segun la llave
+          for(var k=0; k < CantEspacios; k++){
             var tabCell = tr.insertCell(-1);
             tabCell.innerHTML= ("&nbsp");
-            var tabCell = tr.insertCell(-1);
-            tabCell.innerHTML= ("&nbsp");
-            //Final de los dos saltos
+          }
+          //Final de los dos saltos
               var tabCell = tr.insertCell(-1);
               tabCell.innerHTML = '<b class="versus">VS</b>';
             }
@@ -590,13 +599,13 @@ $.getJSON(url, function (json) {
           tabCell.innerHTML= ("&nbsp");
           tr = table.insertRow(-1);
           //Cantidad de saltos segun la llave
-          var tabCell = tr.insertCell(-1);
-            tabCell.innerHTML= ("&nbsp");
+          for(var k=0; k < CantEspacios; k++){
             var tabCell = tr.insertCell(-1);
             tabCell.innerHTML= ("&nbsp");
-            //Final de los dos saltos
+          }
+          //Final de los dos saltos
           var tabCell = tr.insertCell(-1);
-          tabCell.innerHTML= ("<h5>4tos de Final</h5>");
+          tabCell.innerHTML= ("<bdi>4tos de Final</bdi>");
           tr = table.insertRow(-1);
           var tabCell = tr.insertCell(-1);
           tabCell.innerHTML= ("&nbsp");
@@ -604,32 +613,32 @@ $.getJSON(url, function (json) {
 
             tr = table.insertRow(-1);
             //Cantidad de saltos segun la llave
+          for(var k=0; k < CantEspacios; k++){
             var tabCell = tr.insertCell(-1);
             tabCell.innerHTML= ("&nbsp");
-            var tabCell = tr.insertCell(-1);
-            tabCell.innerHTML= ("&nbsp");
-            //Final de los dos saltos
+          }
+          //Final de los dos saltos
             var tabCell = tr.insertCell(-1);
             tabCell.innerHTML = json.records[i-1].CUARTOS;
             if(i%16==0){
               tr = table.insertRow(-1);
               //Cantidad de saltos segun la llave
+          for(var k=0; k < CantEspacios; k++){
             var tabCell = tr.insertCell(-1);
             tabCell.innerHTML= ("&nbsp");
-            var tabCell = tr.insertCell(-1);
-            tabCell.innerHTML= ("&nbsp");
-            //Final de los dos saltos
+          }
+          //Final de los dos saltos
               var tabCell = tr.insertCell(-1);
               tabCell.innerHTML = "<b>------------------</b>";
             }
             if(i==8||i==24){
               tr = table.insertRow(-1);
               //Cantidad de saltos segun la llave
+          for(var k=0; k < CantEspacios; k++){
             var tabCell = tr.insertCell(-1);
             tabCell.innerHTML= ("&nbsp");
-            var tabCell = tr.insertCell(-1);
-            tabCell.innerHTML= ("&nbsp");
-            //Final de los dos saltos
+          }
+          //Final de los dos saltos
               var tabCell = tr.insertCell(-1);
               tabCell.innerHTML = '<b class="versus">VS</b>';
             }
@@ -642,13 +651,13 @@ $.getJSON(url, function (json) {
           tabCell.innerHTML= ("&nbsp");
           tr = table.insertRow(-1);
           //Cantidad de saltos segun la llave
-          var tabCell = tr.insertCell(-1);
-            tabCell.innerHTML= ("&nbsp");
+          for(var k=0; k < CantEspacios; k++){
             var tabCell = tr.insertCell(-1);
             tabCell.innerHTML= ("&nbsp");
-            //Final de los dos saltos
+          }
+          //Final de los dos saltos
           var tabCell = tr.insertCell(-1);
-          tabCell.innerHTML= ("<h5>Semifinal</h5>");
+          tabCell.innerHTML= ("<bdi>Semifinal</bdi>");
           tr = table.insertRow(-1);
           var tabCell = tr.insertCell(-1);
           tabCell.innerHTML= ("&nbsp");
@@ -656,21 +665,21 @@ $.getJSON(url, function (json) {
 
             tr = table.insertRow(-1);
             //Cantidad de saltos segun la llave
+          for(var k=0; k < CantEspacios; k++){
             var tabCell = tr.insertCell(-1);
             tabCell.innerHTML= ("&nbsp");
-            var tabCell = tr.insertCell(-1);
-            tabCell.innerHTML= ("&nbsp");
-            //Final de los dos saltos
+          }
+          //Final de los dos saltos
             var tabCell = tr.insertCell(-1);
             tabCell.innerHTML = json.records[i-1].SEMIS;
             if(i==16){
               tr = table.insertRow(-1);
               //Cantidad de saltos segun la llave
+          for(var k=0; k < CantEspacios; k++){
             var tabCell = tr.insertCell(-1);
             tabCell.innerHTML= ("&nbsp");
-            var tabCell = tr.insertCell(-1);
-            tabCell.innerHTML= ("&nbsp");
-            //Final de los dos saltos
+          }
+          //Final de los dos saltos
               var tabCell = tr.insertCell(-1);
               tabCell.innerHTML = '<b class="versus">VS</b>';
             }
@@ -683,13 +692,13 @@ $.getJSON(url, function (json) {
           tabCell.innerHTML= ("&nbsp");
           tr = table.insertRow(-1);
           //Cantidad de saltos segun la llave
-          var tabCell = tr.insertCell(-1);
-            tabCell.innerHTML= ("&nbsp");
+          for(var k=0; k < CantEspacios; k++){
             var tabCell = tr.insertCell(-1);
             tabCell.innerHTML= ("&nbsp");
-            //Final de los dos saltos
+          }
+          //Final de los dos saltos
           var tabCell = tr.insertCell(-1);
-          tabCell.innerHTML= ("<h5>Final</h5>");
+          tabCell.innerHTML= ("<bdi>Final</bdi>");
           tr = table.insertRow(-1);
           var tabCell = tr.insertCell(-1);
           tabCell.innerHTML= ("&nbsp");
@@ -697,11 +706,11 @@ $.getJSON(url, function (json) {
 
             tr = table.insertRow(-1);
             //Cantidad de saltos segun la llave
+          for(var k=0; k < CantEspacios; k++){
             var tabCell = tr.insertCell(-1);
             tabCell.innerHTML= ("&nbsp");
-            var tabCell = tr.insertCell(-1);
-            tabCell.innerHTML= ("&nbsp");
-            //Final de los dos saltos
+          }
+          //Final de los dos saltos
             var tabCell = tr.insertCell(-1);
             tabCell.innerHTML = json.records[i-1].FINAL;
 
@@ -796,14 +805,31 @@ $("#re").css("visibility","visible");
         <p style="color:red; font-weight:bold; font-size: 2vh; margin-bottom: 3vh;">IMPORTANTE: Las llaves se actualizan <br>constantemente. Actualice el listado.</p>
     </div>
     <div align="center">
-  
+      
+      
+      <div class="container-fluid">
+        <h5 style="color:#010b76;">Auspician:</h5>
+        <div class="row justify-content-center">
+          <div class="col-xl-2 text-center">
+            <a href="https://www.instagram.com/romaphotolabph/">
+              <img class="imgAus" src="img/logo-roma-photolab-q1ThirtColor.png" style="height: 15vh; width: 37vh; margin-left:-7vh; margin-bottom: -4vh;" alt="">
+            </a>
+          </div>
+          <div class="col-xl-2 text-center">
+            <a href="https://www.instagram.com/victas_arg/">
+              <img class="imgAus text-center" src="img/LogoVictas.jpg" style="height: 13vh; width: 13vh; margin-left: 2vh; margin-bottom: 5vh;" alt="">
+            </a>
+          </div>
+         </div>
+      </div>
+
       <input id="b1" type="button" onclick="read_value()"class="btn" style="height: 8vh; width: 40vh; font-size: 3vh; margin-bottom: 3vh; border:1px solid white; color:white;" value="Ver Llave" />
       <input id="final" type="button" onclick="read_value()"class="btn" style="height: 8vh; width: 40vh; font-size: 3vh; margin-bottom: 3vh; display:none; border:1px solid white; color:white;" value="Actualizar Llave" />
       <div id="showData">
       </div>
       <div id="loader"></div>
       </div>
-    
+
 
 
     <section class="footer" style="margin-right: 2vh;">
